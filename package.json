@@ -1,0 +1,32 @@
+{
+  "name": "pmtiles-s3-proxy",
+  "version": "0.0.0",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.108",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^18.11.2",
+    "esbuild": "^0.20.0",
+    "tsx": "^4.7.0",
+    "typescript": "^4.8.4"
+  },
+  "private": true,
+  "scripts": {
+    "tsc": "tsc --noEmit --watch",
+    "build": "esbuild src/index.ts --target=es2020 --outfile=dist/index.mjs --format=esm --bundle --platform=node --target=node18 --external:@aws-sdk/client-s3 --external:@aws-sdk/node-http-handler --external:express --external:@aws-sdk/credential-providers --banner:js=//$(git describe --always)",
+    "test": "exit 1"
+  },
+  "module": "es2020",
+  "files": [
+    "dist/**",
+    "README.md"
+  ],
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.360.0",
+    "@aws-sdk/credential-providers": "^3.616.0",
+    "@aws-sdk/node-http-handler": "^3.360.0",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "pmtiles": "^3.0.6"
+  }
+}
